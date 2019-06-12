@@ -1,16 +1,12 @@
 package com.abhay.sportsdemoapp;
 
 import android.app.ProgressDialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
@@ -27,10 +23,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String URL_DATA2="https://cricapi.com/api/matches?apikey=7R54QvYXYXSOFn7cYunn7TdCOKO2";
 
     List<ListItem> listItems;
-    List<matchListItem> matchListItems;
+    List<MatchListItem> MatchListItems;
     ProgressBar progressBar;
     ProgressBar progressBar1;
     private ProgressDialog mLoginProgress;
@@ -71,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         horizontalrecyclerview=findViewById(R.id.horizontalrecyclerview);
 
         listItems=new ArrayList<>();
-        matchListItems=new ArrayList<>();
+        MatchListItems =new ArrayList<>();
 
         loadRecyclerViewData();
         loadhorizontalRecyclerViewData();
@@ -82,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-            horizontalAdapter=new HorizontalAdapter(matchListItems,this);
+            horizontalAdapter=new HorizontalAdapter(MatchListItems,this);
             horizontalrecyclerview.setAdapter(horizontalAdapter);
             horizontalrecyclerview.setLayoutManager(linearLayoutManager);
 
@@ -172,14 +164,14 @@ public class MainActivity extends AppCompatActivity {
 
                             for (int i = 0; i < Array.length(); i++) {
                                 JSONObject jsonPart = Array.getJSONObject(i);//only one object in array i.e. at 0th position--{"id":721,"main":"Haze","description":"haze","icon":"50n"}
-                                matchListItem item=new matchListItem(
+                                MatchListItem item=new MatchListItem(
                                         jsonPart.getString("team-1")
                                         ,jsonPart.getString("team-2")
                                         ,jsonPart.getString("type")
                                         ,jsonPart.getString("matchStarted")
                                 );
 
-                                matchListItems.add(item);
+                                MatchListItems.add(item);
 
                                 //adapter=new Adapter(listItems,getApplicationContext());
 
@@ -226,16 +218,16 @@ public class MainActivity extends AppCompatActivity {
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject jsonPart = Array.getJSONObject(i);//only one object in array i.e. at 0th position--{"id":721,"main":"Haze","description":"haze","icon":"50n"}
-                        matchListItem item=new matchListItem(
+                        MatchListItem item=new MatchListItem(
                                 jsonPart.getString("team-1")
                                 ,jsonPart.getString("team-2")
                                 ,jsonPart.getString("type")
                                 ,jsonPart.getString("matchStarted")
                                 );
 
-                        matchListItems.add(item);
+                        MatchListItems.add(item);
 
-                        horizontalAdapter=new HorizontalAdapter(matchListItems,getApplicationContext());
+                        horizontalAdapter=new HorizontalAdapter(MatchListItems,getApplicationContext());
 
                         horizontalrecyclerview.setAdapter(horizontalAdapter);
                     }

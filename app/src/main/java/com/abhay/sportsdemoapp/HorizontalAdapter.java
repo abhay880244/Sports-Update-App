@@ -1,17 +1,12 @@
 package com.abhay.sportsdemoapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,10 +19,10 @@ public class HorizontalAdapter  extends RecyclerView.Adapter<HorizontalAdapter.V
 
 
 
-        private List<matchListItem> mListItem;
+        private List<MatchListItem> mListItem;
         private Context context;
 
-        public HorizontalAdapter(List<matchListItem> mListItem, Context context) {
+        public HorizontalAdapter(List<MatchListItem> mListItem, Context context) {
             this.mListItem = mListItem;
             this.context = context;
         }
@@ -45,7 +40,7 @@ public class HorizontalAdapter  extends RecyclerView.Adapter<HorizontalAdapter.V
 
         @Override
         public void onBindViewHolder(@NonNull VHolder vHolder, int i) {
-            final matchListItem match_ListItem= mListItem.get(i);
+            final MatchListItem match_ListItem= mListItem.get(i);
 
             vHolder.team1.setText(match_ListItem.getTeam1());
 
