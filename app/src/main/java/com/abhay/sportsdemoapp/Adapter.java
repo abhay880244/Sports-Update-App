@@ -1,6 +1,8 @@
 package com.abhay.sportsdemoapp;
 
+import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Map;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.VHolder>  {
 
@@ -45,6 +48,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.VHolder>  {
 
         Picasso.with(context).load(listItem.getImageUrl()).into(vHolder.imageView);
 
+        vHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context ,Webview.class);
+                intent.putExtra("web",listItem.getUrl());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
 
 
 
@@ -72,6 +85,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.VHolder>  {
             imageView=itemView.findViewById(R.id.imageView);
             title=itemView.findViewById(R.id.title);
             description=itemView.findViewById(R.id.description);
+
 
 
 
