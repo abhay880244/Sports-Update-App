@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#cccc">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:text="New Matches"
         android:textSize="20dp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
         />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="30dp"
-        android:layout_height="160dp"
+        android:layout_height="wrap_content"
         android:id="@+id/horizontalrecyclerview"
         android:scrollbars="horizontal"></android.support.v7.widget.RecyclerView>
 

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.RecyclerView);
         horizontalrecyclerview=findViewById(R.id.horizontalrecyclerview);
 
+
         listItems=new ArrayList<>();
         MatchListItems =new ArrayList<>();
 
@@ -108,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
             adapter=new Adapter(listItems,this);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(manager);
+
+
+
             recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
